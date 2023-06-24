@@ -6,7 +6,7 @@ function SinhVien(
     _ngaySinh,
     _khoaHoc,
     _diemToan,
-    _diemLy,
+    //_diemLy,
     _diemHoa
 ) {
     ;(this.maSV = _maSV),

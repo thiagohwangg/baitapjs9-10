@@ -28,7 +28,6 @@ function getThongTinSV(isEdit) {
         diemToan,
         +diemHoa
     )
-
     
 
     var isValid = true
@@ -65,17 +64,20 @@ function getThongTinSV(isEdit) {
     
 
     isValid &= kiemTraChuoi(sinhVien.matKhau,1,undefined,'#tbMatKhau','Mật khẩu không được bỏ trống') &&
-    kiemTraPattern(sinhVien.matKhau,'#tbMatKhau',/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,10}$/,'Mật Khẩu từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt)'
+    kiemTraPattern(sinhVien.matKhau,'#tbMatKhau',/^(?=.*\d)(?=.*[A-Z])(?=.*\W).{6,10}$/
+    ,'Mật Khẩu từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt)'
     )
 
     isValid &= kiemTraChuoi(sinhVien.ngaySinh,1,undefined,'#tbNgay','Ngày làm không được để trống') &&
     kiemTraPattern(sinhVien.ngaySinh,'#tbNgay',/^(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$/,'Định dạng mm/dd/yyyy'
     )
 
-    // isValid &= kiemTraChuoi(khoaHoc,1,undefined,'#tbLuongCB','Lương không được để trống') && kiemTraSo(sinhVien.khoaHoc,1000000,20000000,'#tbLuongCB','Nhập từ 1.000.000 đến 20.000.000')
+    isValid &= kiemTraChuoi(khoaHoc,1,undefined,'#tbLuongCB','Lương không được để trống') && kiemTraSo(sinhVien.khoaHoc,1000000,20000000,'#tbLuongCB','Nhập từ 1.000.000 đến 20.000.000')
 
-    //  isValid &= kiemTraChuoi(diemHoa,1,undefined,'#tbGiolam','Số giờ làm không được để trống') &&kiemTraSo(sinhVien.diemHoa,80,200,'#tbGioLam','Nhập số giờ làm từ 80h đến 200h')
 
+
+    isValid &= kiemTraChuoi(diemHoa,1,undefined,'#tbGioLam','Số giờ làm không được để trống') &&kiemTraSo(sinhVien.diemHoa,80,200,'#tbGioLam','Nhập số giờ làm từ 80h đến 200h')
+    
     return isValid ? sinhVien : undefined
 }
 
@@ -210,6 +212,7 @@ function updateSV(maSV) {
     getElement('#luongCB').value = sv.khoaHoc
     getElement('#chucvu').value = sv.diemToan
     getElement('#gioLam').value = sv.diemHoa
+    $("#myModal").modal("show")
     
 }
 

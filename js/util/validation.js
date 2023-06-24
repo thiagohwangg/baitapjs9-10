@@ -20,6 +20,7 @@ function kiemTraChuoi(value, minLength, maxLength, selector, messErr) {
 }
 
 function kiemTraSo(value, min, max, selector, messErr) {
+    debugger;
     // Nếu như kiểm tra false
     if (value < min || value > max) {
         getElement(selector).innerHTML = messErr
@@ -81,3 +82,4 @@ function kiemTraMaSV(maSV, dssv, isEdit, selector, messErr) {
         return false
     }
 }
+
